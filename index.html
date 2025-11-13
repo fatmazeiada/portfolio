@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>فاطمه زياده — Web Designer & Data Analyst</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #121212;
+      --accent: #bb86fc;
+      --muted: #b0b0b0;
+      --card: #1e1e1e;
+      --btn-bg: #bb86fc;
+      --btn-text: #121212;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Cairo", sans-serif;
+      background: var(--bg);
+      color: var(--muted);
+      direction: rtl;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* Header */
+    .site-header {
+      background: transparent;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .site-header.scrolled {
+      background-color: #1e1e1e;
+      box-shadow: 0 2px 6px rgba(187, 134, 252, 0.3);
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--accent);
+      cursor: default;
+    }
+
+    .nav a {
+      margin-inline-end: 18px;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.3s, font-weight 0.3s;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      margin: 0 0 12px;
+      color: var(--accent);
+    }
+
+    .lead {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .cta {
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      text-decoration: none;
+      margin-inline-end: 8px;
+      transition: transform 0.3s, background-color 0.3s;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background-color: #9a5de8;
+      transform: translateY(-2px);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .btn.ghost:hover {
+      background: var(--accent);
+      color: var(--btn-text);
+    }
+
+    .meta {
+      list-style: none;
+      padding: 0;
+      margin-top: 16px;
+      color: var(--muted);
+    }
+
+    .meta li {
+      margin-bottom: 6px;
+    }
+
+    .meta a {
+      color: var(--btn-bg);
+      text-decoration: none;
+    }
+
+    .meta a:hover {
+      text-decoration: underline;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(187, 134, 252, 0.4);
+      object-fit: cover;
+      height: 300px;
+    }
+
+    /* Sections */
+    .section {
+      padding: 36px 0;
+    }
+
+    .section h2 {
+      margin-bottom: 16px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(187, 134, 252, 0.1);
+      transition: box-shadow 0.3s;
+      color: #ddd;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 30px rgba(187, 134, 252, 0.3);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--btn-bg);
+    }
+
+    .card p {
+      margin: 12px 0;
+      color: #ccc;
+      flex-grow: 1;
+    }
+
+    .tags {
+      margin-top: 12px;
+    }
+
+    .tags span {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: #312f44;
+      margin-inline-end: 8px;
+      font-size: 12px;
+      color: #bbb;
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 16px;
+      text-decoration: none;
+      color: var(--btn-bg);
+      font-weight: 600;
+      transition: color 0.3s;
+      align-self: flex-start;
+    }
+
+    .link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .contact-list li {
+      margin-bottom: 14px;
+    }
+
+    .contact-list a {
+      color: var(--btn-bg);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .contact-list a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid #312f44;
+      padding: 18px 0;
+      margin-top: 36px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .site-header .container {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .nav a {
+        margin-inline-end: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">فاطمه زياده</div>
+      <nav class="nav">
+        <a href="#home" class="active">الرئيسية</a>
+        <a href="#projects">المشاريع</a>
+        <a href="#contact">تواصل</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero container">
+      <div class="hero-text">
+        <h1>مرحبًا — أنا فاطمه زياده</h1>
+        <p class="lead">
+          باحثة ماجستير في نظم معلومات الأعمال — مصممة واجهات ومحللة بيانات. أقدّم حلول ويب نظيفة ومتجاوبة وتحليلات مبنية على Python و SQL.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#contact">تواصل معي</a>
+          <a class="btn ghost" href="#projects">شوف شغلي</a>
+        </div>
+        <ul class="meta">
+          <li>الإيميل: <a href="mailto:batazeaida@gmail.com">batazeaida@gmail.com</a></li>
+          <li>واتساب: <a href="tel:+201091927163">01091927163</a></li>
+        </ul>
+      </div>
+      <div class="hero-image">
+        <!-- صورتك الشخصية المرسلة -->
+        <img src="C:\Users\AS\Downloads\WhatsApp Image 2025-11-13 at 16.16.32_e89c4b61.jpg " alt="فاطمه زياده" />
+      </div>
+    </section>
+
+    <section id="projects" class="container section">
+      <h2>جميع المشاريع</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>sales_project</h3>
+          <p>تحليل بيانات المبيعات وعمل تقارير مرئية باستخدام Python.</p>
+          <div class="tags"><span>Python</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/sales_project" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>covid</h3>
+          <p>مشروع متعلق بتحليل بيانات أو رصد كوفيد.</p>
+          <div class="tags"><span>Python</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/covid" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>haert-analysis</h3>
+          <p>تحليل بيانات مرتبطة بالقلب.</p>
+          <div class="tags"><span>Data Analysis</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/haert-analysis" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>medical_data_visualizer</h3>
+          <p>تصوير بيانات طبية بطريقة مرئية.</p>
+          <div class="tags"><span>Data Visualization</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/medical_data_visualizer" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>PRO</h3>
+          <p>مشروع محترف في تحليل أو تصميم ويب.</p>
+          <div class="tags"><span>Web Design</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/PRO" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>time_series</h3>
+          <p>تحليل السلاسل الزمنية.</p>
+          <div class="tags"><span>Python</span><span>Time Series</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/time_series" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>sea_level</h3>
+          <p>تحليل بيانات مستوى سطح البحر.</p>
+          <div class="tags"><span>Data Analysis</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/sea_level" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>ecomerce</h3>
+          <p>تصميم أو تطوير متجر إلكتروني.</p>
+          <div class="tags"><span>Web Development</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/ecomerce" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>Admin</h3>
+          <p>لوحة تحكم إدارية أو مشروع إداري.</p>
+          <div class="tags"><span>Admin Panel</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/Admin" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>learnhub-api</h3>
+          <p>واجهة برمجية (API) لمنصة تعليمية.</p>
+          <div class="tags"><span>API</span><span>Backend</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/learnhub-api" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>project-one</h3>
+          <p>مشروع أول وأساسيات تطوير.</p>
+          <div class="tags"><span>Web Development</span></div>
+          <a class="link" href="https://github.com/fatmazeiada/project-one" target="_blank" rel="noopener noreferrer">عرض المشروع على GitHub</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container section contact">
+      <h2>تواصل معي</h2>
+      <ul class="contact-list">
+        <li>الإيميل: <a href="mailto:batazeaida@gmail.com">batazeaida@gmail.com</a></li>
+        <li>
+          واتساب:
+          <a href="https://wa.me/201091927163" target="_blank" rel="noopener noreferrer">01091927163</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© فاطمه زياده — Web Designer & Data Analyst</p>
+    </div>
+  </footer>
+
+  <script>
+    // تفعيل التنقل السلس مع تحديث الرابط النشط في القائمة
+    document.querySelectorAll(".nav a").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = a.getAttribute("href").slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+          document.querySelectorAll(".nav a").forEach((link) =>
+            link.classList.remove("active")
+          );
+          a.classList.add("active");
+        }
+      });
+    });
+
+    // تأثير تغيير خلفية وشادو الهيدر عند التمرير
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector(".site-header");
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  </script>
+</body>
+</html>
